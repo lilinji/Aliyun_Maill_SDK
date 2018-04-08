@@ -36,6 +36,7 @@ git clone https://github.com/lilinji/Aliyun_Maill_SDK
 ```
 crontab -e 
 02 09 * * *  ./send_mail.sh
+```
 ## 访问
 https://github.com/lilinji/Aliyun_Maill_SDK
 
