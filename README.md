@@ -2,7 +2,7 @@
 # AdminSet
 <img src="https://travis-ci.org/guohongze/adminset.svg?branch=master"></img> 
 <img src="https://img.shields.io/hexpm/l/plug.svg"></img>
-[![release](https://img.shields.io/github/release/guohongze/adminset.svg)]https://github.com/lilinji/Aliyun_Maill_SDK)
+[![release](https://img.shields.io/github/release/guohongze/adminset.svg)https://github.com/lilinji/Aliyun_Maill_SDK])
 <br>
 Aliyun_Maill_SDK基于DevOps理念开发，以整合全部运维场景为己任。Aliyun_Maill_SDK是一个真正的基于运维思维而开发的全自动化安装集群Pipline。<br>
 
