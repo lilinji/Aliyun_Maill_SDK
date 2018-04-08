@@ -1,0 +1,58 @@
+<?php
+    include_once '/opt/aliyun-php-sdk-core/Config.php';
+    use Dm\Request\V20151123 as Dm;
+    //需要设置对应的region名称，如华东1（杭州）设为cn-hangzhou，新加坡Region设为ap-southeast-1，澳洲Region设为ap-southeast-2。
+    $iClientProfile = DefaultProfile::getProfile("cn-hangzhou", "LTAIYHu9Sqt3hTK3", "KN30zUxIRtwz5g52Qxn8TuIx4eleEy");
+    //新加坡或澳洲region需要设置服务器地址，华东1（杭州）不需要设置。
+    //$iClientProfile::addEndpoint("ap-southeast-1","ap-southeast-1","Dm","dm.ap-southeast-1.aliyuncs.com");
+    //$iClientProfile::addEndpoint("ap-southeast-2","ap-southeast-2","Dm","dm.ap-southeast-2.aliyuncs.com");
+    $client = new DefaultAcsClient($iClientProfile);
+    $request = new Dm\SingleSendMailRequest();
+    //新加坡或澳洲region需要设置SDK的版本，华东1（杭州）不需要设置。
+    //$request->setVersion("2017-06-22");
+    $num=1;
+    $dtime="2018-03-22";
+    $daty="7";
+    $ECS="6";
+    $ECS1="32C 128G; 10M __; 40G ___";
+    $NAS="1";
+    $NAS1="40T";
+    $OSS="1";
+    $OSS1="150T";
+    
+    $messages ="<span style=\"color:blue;font-size: 24px;\">尊敬的诺禾vip客户:</span><br/>
+    <br>&nbsp;&nbsp;你好～<br/>
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;您的云资源将将于”$dtime 24:00:00” 正式到期，<br/>
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;根据合作协议，贵公司应于 ”$dtime 24:00:00”前预付下月费用，还烦请贵公司近期内及时向我公司支付上述款项，感谢您的信赖与支持！<br/>
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;如果未及时付费，到期账号自动关闭，由此造成的损失由贵公司承担。账号关闭后，数据为您保留3天，逾期数据将不可恢复。到期后3天内续费，账号恢复正常，逾期数据存储产生的费用需由您承担。<br/>
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;截至目前仅剩\"$daty\"天。未续费的云服务器实例到期后将停止服务，<br/>
+    <br>&nbsp;&nbsp;开通资源明细如下:<br/>
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;产品个数: \"$ECS\"，产品类型:\"ECS\"，产品标准: \"$ECS1\"
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;产品个数: \"$NAS\"，产品类型:\"NAS\"，产品标准: \"$NAS1\"
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;产品个数 :\"$OSS\"，产品类型:\"OSS\"，产品标准: \"$OSS1\"</br>
+    </br>
+    </br>
+    </br>
+    <br>祝您工作顺利，生活愉快！</br>";
+    $request->setAccountName("cloud@novocloud.cn");
+    $request->setFromAlias("novocloud");
+    $request->setAddressType(1);
+    $request->setTagName("novogene");
+    $request->setReplyToAddress("true");
+    $request->setToAddress("lilinji@novogene.com");
+
+    $request->setSubject("温馨提示：您的云资源即将到期，请及时续费");
+    $request->setHtmlBody("$messages");
+    try {
+        $response = $client->getAcsResponse($request);
+        print_r($response);
+    }
+    catch (ClientException  $e) {
+        print_r($e->getErrorCode());
+        print_r($e->getErrorMessage());
+    }
+    catch (ServerException  $e) {
+        print_r($e->getErrorCode());
+        print_r($e->getErrorMessage());
+    }
+?>
