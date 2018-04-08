@@ -30,12 +30,12 @@ git clone https://github.com/lilinji/Aliyun_Maill_SDK
 #### step1:
 拷贝源码到管理主机上并执行:
 git clone https://github.com/lilinji/Aliyun_Maill_SDK
-crontab -e 
-02 09 * * *  ./send_mail.sh
+
 
 
 ```
-
+crontab -e 
+02 09 * * *  ./send_mail.sh
 ## 访问
 https://github.com/lilinji/Aliyun_Maill_SDK
 
